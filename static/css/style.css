@@ -107,6 +107,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 body {
@@ -1899,50 +1900,446 @@ img {
 }
 
 @media (max-width: 768px) {
+  /* =========================================================================
+     1. ROOT, BODY, CONTAINER & OVERFLOW PREVENTION (ZERO HORIZONTAL BOUNCE)
+     ========================================================================= */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+  }
+
+  body {
+    /* pb-24: 6.5rem (~104px) clearance so fixed audio player never covers bottom content */
+    padding-bottom: 6.5rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+    overflow-x: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* =========================================================================
+     2. SITE HEADER & MOBILE NAVIGATION DRAWER
+     ========================================================================= */
+  .site-header {
+    height: 64px;
+  }
+
+  .nav {
+    height: 64px;
+  }
+
   .nav-links {
     display: none;
     position: absolute;
-    top: 72px;
+    top: 64px;
     left: 0;
     right: 0;
     background: var(--bg-canvas);
     border-bottom: 1px solid var(--border-subtle);
     flex-direction: column;
-    padding: 1.5rem;
-    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    gap: 0.5rem;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
   }
 
   .nav-links.open {
     display: flex;
   }
 
+  .nav-links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+    padding: 0.5rem 0;
+  }
+
   .hamburger {
     display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* =========================================================================
+     3. HERO EDITORIAL FRAME & TOP BAR
+     ========================================================================= */
+  .editorial-hero {
+    padding: 1rem 0 2rem;
   }
 
   .editorial-frame {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem;
     border-radius: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .editorial-top-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .editorial-corner-tab {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.9rem;
   }
 
   .tech-brand-strip {
     display: none;
   }
 
+  .editorial-works-head {
+    display: flex;
+    align-items: center;
+  }
+
+  /* =========================================================================
+     4. HERO PROFILE IMAGE & TEXT OVERLAY (FIX 1)
+     ========================================================================= */
+  .editorial-split-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    min-height: auto;
+  }
+
+  .editorial-portrait-zone {
+    min-height: unset;
+    height: 400px;
+    max-height: 420px;
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.7);
+  }
+
+  .portrait-photo-container {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .editorial-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+  }
+
+  /* Remove side gradient mask on single-column mobile to preserve image clarity */
+  .portrait-gradient-right {
+    display: none;
+  }
+
+  /* Tuned bottom overlay gradient: dark at base for text clarity, transparent at 60% so person & horse face stay visible */
+  .portrait-gradient-bottom {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 30%, transparent 60%);
+  }
+
+  .editorial-name-overlay {
+    padding: 1rem 1.25rem;
+    z-index: 3;
+    position: relative;
+  }
+
   .editorial-hero-name {
-    font-size: 3.4rem;
+    font-size: clamp(2.4rem, 8.5vw, 3.2rem);
+    line-height: 0.92;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95);
   }
 
+  .editorial-hero-role {
+    font-size: 0.85rem;
+    margin-top: 0.45rem;
+    color: #e4e4e7;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  }
+
+  /* =========================================================================
+     5. WORKS / EXPERIENCE LIST ALIGNMENT & TYPOGRAPHY (FIX 2)
+     ========================================================================= */
+  .editorial-works-zone {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .works-index-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .works-row {
+    padding: 0.85rem 0.5rem;
+    min-height: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .works-row-normal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .works-row-title-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .works-row-title {
+    font-size: 1rem; /* text-base */
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    color: #f4f4f5;
+  }
+
+  .works-row-desc {
+    font-size: 0.8rem; /* text-sm */
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    color: var(--text-muted);
+  }
+
+  .works-row-count {
+    font-size: 0.82rem;
+    margin-left: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Active yellow pill ribbon with running marquee ticker */
+  .works-row.active {
+    padding: 0.45rem 0;
+    border-bottom-color: transparent;
+  }
+
+  .works-row-active-pill {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0.65rem 0.9rem;
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0 6px 20px rgba(255, 199, 0, 0.28);
+  }
+
+  .works-row.active .works-row-active-pill {
+    display: flex;
+  }
+
+  .ticker-track {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-content {
+    font-size: 0.95rem;
+    padding-right: 1.5rem;
+    animation: tickerLoop 10s linear infinite;
+  }
+
+  .ticker-count-badge {
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+
+  /* =========================================================================
+     6. FLOATING WIDGETS & PREVIEW CARDS (CTF / SPRINTS / BADGES) (FIX 3)
+     ========================================================================= */
   .floating-mockup-wrapper {
-    display: none; /* Hide floating 3D stack on mobile for pure clarity */
+    display: block !important;
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 1.25rem !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
   }
 
+  .mockup-stack {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.85rem !important;
+  }
+
+  .mockup-card {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: unset !important;
+    opacity: 1 !important;
+    box-sizing: border-box !important;
+    border-radius: 16px !important;
+    background: #18181b !important;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Hero Card: Card 2 (Front Center Heroic Focus) */
+  .mockup-card.card-center {
+    order: 1 !important;
+    padding: 1.25rem !important;
+    border-color: rgba(255, 199, 0, 0.35) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+  }
+
+  .mockup-card.card-center .mockup-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 0.35rem;
+  }
+
+  .mockup-card.card-center .mockup-sub {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-top: 0.2rem;
+  }
+
+  .mockup-card.card-center .mockup-tag-pill {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+    margin-top: 0.35rem;
+    background: var(--bg-surface-subtle);
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+  }
+
+  .mockup-card.card-center .mockup-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    background: rgba(255, 199, 0, 0.12);
+    border: 1px solid rgba(255, 199, 0, 0.3);
+    border-radius: 10px;
+    color: var(--accent-yellow);
+    font-size: 0.82rem;
+    font-weight: 700;
+    min-height: 44px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .mockup-card.card-center .mockup-btn:active {
+    background: rgba(255, 199, 0, 0.22);
+  }
+
+  /* Metric Card: Card 1 (SPRINTS / FLEET RADAR) */
+  .mockup-card.card-left {
+    order: 2 !important;
+    padding: 1rem 1.25rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 0.6rem !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .mockup-card.card-left .mockup-metric-ring {
+    display: none !important;
+  }
+
+  .mockup-card.card-left > div:last-child {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .mockup-card.card-left .mockup-metric-val {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--accent-yellow);
+  }
+
+  .mockup-card.card-left .mockup-metric-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  /* Checklist / Items Card: Card 3 (TECH SPRINT WINS / ACTIVE DISPATCH) */
+  .mockup-card.card-right {
+    order: 3 !important;
+    padding: 1rem 1.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .mockup-card.card-right .mockup-list-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin: 0.2rem 0;
+  }
+
+  .mockup-card.card-right .mockup-list-item {
+    font-size: 0.82rem;
+    color: #e4e4e7;
+    padding: 0.2rem 0;
+  }
+
+  /* =========================================================================
+     7. HERO BOTTOM META BAR & TOUCH ACTIONS
+     ========================================================================= */
   .editorial-bottom-bar {
     flex-direction: column;
     align-items: flex-start;
@@ -1951,29 +2348,354 @@ img {
 
   .meta-actions {
     width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-action-pill {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .meta-cta-book {
     flex: 1;
+    min-height: 44px;
     justify-content: center;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* =========================================================================
+     8. CONTENT SECTIONS (ABOUT, PROJECTS, ROLES, TIMELINE, HOBBIES, CONTACT)
+     ========================================================================= */
+  .about-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .stats-grid-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
   }
 
+  .bio-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .bio-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    padding: 1.25rem;
+  }
+
+  .project-link-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .roles-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .timeline-matrix {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .timeline-filters {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+
+  .hobbies-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .hobbies-filter-bar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .contact-layout-split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-form-card {
+    padding: 1.25rem;
+  }
+
+  .contact-form-card input,
+  .contact-form-card textarea,
+  .contact-form-card button {
+    min-height: 44px;
+    font-size: 16px; /* Prevents auto-zoom on mobile Safari */
+  }
+
+  .reach-card {
+    min-height: 48px;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+
+  /* =========================================================================
+     9. BOTTOM PERSISTENT AUDIO PLAYER (FIX 4)
+     ========================================================================= */
   .hero-music-dock {
     bottom: 12px;
-    right: 12px;
-    left: 12px;
+    right: 10px;
+    left: 10px;
+    margin: 0 auto;
+    max-width: 480px;
+    width: auto;
+    box-sizing: border-box;
   }
 
   .hero-music-bento-small {
     width: 100%;
+    box-sizing: border-box;
+    padding: 0.45rem 0.65rem;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.85);
+  }
+
+  .hmb-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.45rem;
+    width: 100%;
+  }
+
+  .hmb-cover {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .hmb-emoji {
+    font-size: 0.9rem;
   }
 
   .hmb-main {
-    max-width: 140px;
+    min-width: 0;
+    flex: 1;
+    max-width: none;
+    overflow: hidden;
+    gap: 0.15rem;
+  }
+
+  .hmb-text-row {
+    font-size: 0.74rem;
+    gap: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .hmb-title {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .hmb-artist {
+    font-size: 0.68rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hmb-eq {
+    display: none; /* Hide animated soundwave bars on mobile to prevent text crowding */
+  }
+
+  .hmb-scrub-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .hmb-progress-bar {
+    flex: 1;
+    height: 3px;
+    min-width: 35px;
+  }
+
+  .hmb-time {
+    font-size: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .hmb-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    flex-shrink: 0;
+  }
+
+  .hmb-btn {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0;
+  }
+
+  .hmb-play-btn {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    flex-shrink: 0;
+  }
+
+  .hmb-queue-btn {
+    padding: 0.22rem 0.45rem;
+    font-size: 0.68rem;
+    gap: 0.2rem;
+    margin-left: 0.1rem;
+    flex-shrink: 0;
+  }
+
+  .hmb-queue-count {
+    font-size: 0.62rem;
+    padding: 0.08rem 0.3rem;
+  }
+
+  .hmb-queue-drawer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: calc(100% + 10px);
+    max-height: 50vh;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+}
+
+/* =========================================================================
+   10. SUB-BREAKPOINT: ULTRA-NARROW SCREENS (<= 400PX)
+   ========================================================================= */
+@media (max-width: 480px) {
+  .nav-status-pill {
+    display: none;
+  }
+
+  .stats-grid-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .meta-actions {
+    gap: 0.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .editorial-hero-name {
+    font-size: 2.35rem;
+  }
+
+  .hero-music-dock {
+    left: 6px;
+    right: 6px;
+    bottom: 8px;
+  }
+
+  .hero-music-bento-small {
+    padding: 0.35rem 0.5rem;
+  }
+
+  .hmb-inner {
+    gap: 0.3rem;
+  }
+
+  .hmb-cover {
+    width: 26px;
+    height: 26px;
+  }
+
+  .hmb-emoji {
+    font-size: 0.8rem;
+  }
+
+  .hmb-main {
+    min-width: 0;
+    max-width: 110px;
+  }
+
+  .hmb-text-row {
+    font-size: 0.68rem;
+  }
+
+  .hmb-artist,
+  .hmb-sep {
+    display: none; /* Show track title only in ultra-cramped viewports */
+  }
+
+  .hmb-time {
+    font-size: 0.58rem;
+  }
+
+  /* Hide mute button on screens < 400px to avoid crowding essential playback controls */
+  #hmc-mute-btn {
+    display: none;
+  }
+
+  /* Compact queue pill: hide text 'Queue', keep badge count & chevron */
+  .hmb-queue-btn span:first-child {
+    display: none;
+  }
+
+  .hmb-queue-btn {
+    padding: 0.2rem 0.35rem;
+  }
+
+  .hmb-btn {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  .hmb-play-btn {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+
+  .hmb-controls {
+    gap: 0.15rem;
   }
 }

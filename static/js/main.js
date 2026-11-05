@@ -371,6 +371,19 @@
           </div>
         </div>
       `;
+
+      // Allow clicking action button in preview card to navigate to target
+      const actionBtn = mockupContainer.querySelector(".mockup-btn");
+      if (actionBtn) {
+        actionBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const target = item.link;
+          if (target && target.startsWith("#")) {
+            const el = document.querySelector(target);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      }
     };
 
     // Initial render
@@ -392,19 +405,35 @@
       row.addEventListener("focus", activateRow);
 
       row.addEventListener("click", () => {
-        activateRow();
-        const target = WORKS_DATA[idx]?.link;
-        if (target && target.startsWith("#")) {
-          const el = document.querySelector(target);
-          if (el) el.scrollIntoView({ behavior: "smooth" });
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+          if (activeIdx === idx) {
+            // If already active, follow the anchor link
+            const target = WORKS_DATA[idx]?.link;
+            if (target && target.startsWith("#")) {
+              const el = document.querySelector(target);
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }
+          } else {
+            // First tap activates this row & updates mockup cards below without jumping
+            activateRow();
+          }
+        } else {
+          activateRow();
+          const target = WORKS_DATA[idx]?.link;
+          if (target && target.startsWith("#")) {
+            const el = document.querySelector(target);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }
         }
       });
     });
 
-    // Cursor Parallax on the mockup wrapper
+    // Cursor Parallax on the mockup wrapper (desktop only)
     const worksZone = $(".editorial-works-zone");
     if (worksZone && !reduce) {
       worksZone.addEventListener("mousemove", (e) => {
+        if (window.innerWidth <= 768) return; // Never set inline transform on mobile
         const rect = worksZone.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -413,7 +442,19 @@
       });
 
       worksZone.addEventListener("mouseleave", () => {
+        if (window.innerWidth <= 768) {
+          mockupContainer.style.transform = "";
+          return;
+        }
         mockupContainer.style.transform = "translateY(-50%) rotateY(0deg) rotateX(0deg)";
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth <= 768) {
+          mockupContainer.style.transform = "";
+        } else {
+          mockupContainer.style.transform = "translateY(-50%) rotateY(0deg) rotateX(0deg)";
+        }
       });
     }
   }
