@@ -372,18 +372,28 @@
         </div>
       `;
 
-      // Allow clicking action button in preview card to navigate to target
-      const actionBtn = mockupContainer.querySelector(".mockup-btn");
-      if (actionBtn) {
-        actionBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const target = item.link;
-          if (target && target.startsWith("#")) {
-            const el = document.querySelector(target);
-            if (el) el.scrollIntoView({ behavior: "smooth" });
+      // Interactive card tapping & action handling
+      const cards = mockupContainer.querySelectorAll(".mockup-card");
+      cards.forEach((card) => {
+        card.addEventListener("click", (e) => {
+          // If clicked the action button, navigate to target
+          if (e.target.closest(".mockup-btn")) {
+            e.stopPropagation();
+            const target = item.link;
+            if (target && target.startsWith("#")) {
+              const el = document.querySelector(target);
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }
+            return;
+          }
+
+          // On mobile, tapping any card in the stack brings it to front
+          if (window.innerWidth <= 768) {
+            cards.forEach(c => c.classList.remove("is-top"));
+            card.classList.add("is-top");
           }
         });
-      }
+      });
     };
 
     // Initial render

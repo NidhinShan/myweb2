@@ -2018,19 +2018,19 @@ img {
 
   .editorial-portrait-zone {
     min-height: unset;
-    height: 400px;
-    max-height: 420px;
+    height: 420px;
     position: relative;
-    border-radius: 18px;
+    border-radius: 20px;
     overflow: hidden;
-    margin-bottom: 0.5rem;
-    box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 0.75rem;
+    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.75);
+    background: #0d0d0e;
   }
 
   .portrait-photo-container {
     position: absolute;
     inset: 0;
-    border-radius: 18px;
+    border-radius: 20px;
     overflow: hidden;
   }
 
@@ -2038,36 +2038,45 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 35%;
+    object-position: 54% 16%;
+    filter: grayscale(100%) contrast(1.06) brightness(1.04);
   }
 
   /* Remove side gradient mask on single-column mobile to preserve image clarity */
   .portrait-gradient-right {
-    display: none;
+    display: none !important;
   }
 
-  /* Tuned bottom overlay gradient: dark at base for text clarity, transparent at 60% so person & horse face stay visible */
+  /* Low bottom gradient: covers only the bottom 40% for text legibility, leaving upper 60% (face & horse) 100% unshaded */
   .portrait-gradient-bottom {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 30%, transparent 60%);
+    background: linear-gradient(to top, rgba(14, 14, 16, 0.95) 0%, rgba(14, 14, 16, 0.72) 20%, rgba(14, 14, 16, 0.22) 32%, transparent 45%) !important;
   }
 
   .editorial-name-overlay {
-    padding: 1rem 1.25rem;
+    padding: 0.75rem 1.15rem 0.85rem;
     z-index: 3;
     position: relative;
+    pointer-events: none;
+    margin-top: auto;
   }
 
   .editorial-hero-name {
-    font-size: clamp(2.4rem, 8.5vw, 3.2rem);
-    line-height: 0.92;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95);
+    font-size: clamp(2.1rem, 7.8vw, 2.75rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--text-primary);
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
   }
 
   .editorial-hero-role {
-    font-size: 0.85rem;
-    margin-top: 0.45rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 0.35rem;
     color: #e4e4e7;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
   }
 
   /* =========================================================================
@@ -2187,72 +2196,84 @@ img {
   }
 
   /* =========================================================================
-     6. FLOATING WIDGETS & PREVIEW CARDS (CTF / SPRINTS / BADGES) (FIX 3)
+     6. FLOATING 3D STACKED MOCKUP PREVIEW (RESPONSIVE CARDS STACKED ANIMATION)
      ========================================================================= */
   .floating-mockup-wrapper {
-    display: block !important;
-    position: static !important;
-    transform: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-top: 1.25rem !important;
-    pointer-events: auto !important;
-    overflow: visible !important;
-  }
-
-  .mockup-stack {
-    position: static !important;
-    width: 100% !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.85rem !important;
-  }
-
-  .mockup-card {
     position: relative !important;
-    left: auto !important;
+    right: auto !important;
     top: auto !important;
     transform: none !important;
     width: 100% !important;
-    height: auto !important;
-    min-height: unset !important;
-    opacity: 1 !important;
-    box-sizing: border-box !important;
-    border-radius: 16px !important;
-    background: #18181b !important;
-    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5) !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 1.75rem auto 1rem !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+    z-index: 10 !important;
   }
 
-  /* Hero Card: Card 2 (Front Center Heroic Focus) */
+  .mockup-stack {
+    position: relative !important;
+    width: 310px !important;
+    height: 285px !important;
+    margin: 0 auto !important;
+    perspective: 1200px !important;
+    transform-style: preserve-3d !important;
+  }
+
+  .mockup-card {
+    position: absolute !important;
+    border-radius: 18px !important;
+    background: rgba(24, 24, 27, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.2s ease, opacity 0.3s ease !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    user-select: none !important;
+    will-change: transform, opacity !important;
+  }
+
+  /* Center Card (Front / Hero Focus - CTF Challenges / Logistics Engine) */
   .mockup-card.card-center {
-    order: 1 !important;
-    padding: 1.25rem !important;
-    border-color: rgba(255, 199, 0, 0.35) !important;
+    width: 220px !important;
+    height: 270px !important;
+    left: 45px !important;
+    top: 5px !important;
+    transform: rotate(1.5deg) scale(1) translateZ(30px) !important;
+    z-index: 3 !important;
+    opacity: 1 !important;
+    padding: 1.25rem 1.15rem !important;
+    border-color: rgba(255, 199, 0, 0.4) !important;
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 199, 0, 0.12) !important;
+    animation: stackPopCenter 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.65rem !important;
+    justify-content: space-between !important;
   }
 
   .mockup-card.card-center .mockup-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #ffffff;
     margin-top: 0.35rem;
   }
 
   .mockup-card.card-center .mockup-sub {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    line-height: 1.4;
+    line-height: 1.35;
     margin-top: 0.2rem;
   }
 
   .mockup-card.card-center .mockup-tag-pill {
     display: inline-block;
     align-self: flex-start;
-    font-size: 0.72rem;
-    padding: 0.2rem 0.55rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
     margin-top: 0.35rem;
     background: var(--bg-surface-subtle);
     border-radius: var(--radius-pill);
@@ -2263,13 +2284,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem 1rem;
-    margin-top: 0.5rem;
+    padding: 0.65rem 0.85rem;
+    margin-top: 0.4rem;
     background: rgba(255, 199, 0, 0.12);
     border: 1px solid rgba(255, 199, 0, 0.3);
     border-radius: 10px;
     color: var(--accent-yellow);
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 700;
     min-height: 44px;
     cursor: pointer;
@@ -2280,27 +2301,36 @@ img {
     background: rgba(255, 199, 0, 0.22);
   }
 
-  /* Metric Card: Card 1 (SPRINTS / FLEET RADAR) */
+  /* Left Card (Back Left Tilted - Sprints / Metric) */
   .mockup-card.card-left {
-    order: 2 !important;
-    padding: 1rem 1.25rem !important;
+    width: 180px !important;
+    height: 238px !important;
+    left: 0px !important;
+    top: 22px !important;
+    transform: rotate(-7.5deg) scale(0.93) translateZ(10px) !important;
+    z-index: 1 !important;
+    opacity: 0.88 !important;
+    padding: 1.15rem !important;
+    box-shadow: 0 14px 34px -8px rgba(0, 0, 0, 0.8) !important;
+    animation: stackPopLeft 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.04s forwards !important;
     display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
+    flex-direction: column !important;
     justify-content: space-between !important;
-    flex-wrap: wrap !important;
-    gap: 0.6rem !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
   }
 
   .mockup-card.card-left .mockup-metric-ring {
-    display: none !important;
-  }
-
-  .mockup-card.card-left > div:last-child {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 199, 0, 0.3);
     display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0.4rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--accent-yellow);
   }
 
   .mockup-card.card-left .mockup-metric-val {
@@ -2310,31 +2340,83 @@ img {
   }
 
   .mockup-card.card-left .mockup-metric-desc {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
   }
 
-  /* Checklist / Items Card: Card 3 (TECH SPRINT WINS / ACTIVE DISPATCH) */
+  /* Right Card (Back Right Tilted - Sprint Wins / Active Dispatch Checklist) */
   .mockup-card.card-right {
-    order: 3 !important;
-    padding: 1rem 1.25rem !important;
+    width: 180px !important;
+    height: 238px !important;
+    left: 130px !important;
+    top: 25px !important;
+    transform: rotate(7.5deg) scale(0.93) translateZ(20px) !important;
+    z-index: 2 !important;
+    opacity: 0.9 !important;
+    padding: 1.15rem !important;
+    box-shadow: 0 14px 34px -8px rgba(0, 0, 0, 0.8) !important;
+    animation: stackPopRight 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.5rem !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
+    justify-content: space-between !important;
   }
 
   .mockup-card.card-right .mockup-list-stack {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
-    margin: 0.2rem 0;
+    margin: 0.3rem 0;
   }
 
   .mockup-card.card-right .mockup-list-item {
-    font-size: 0.82rem;
+    font-size: 0.76rem;
     color: #e4e4e7;
     padding: 0.2rem 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Interactive active card states when tapped/focused on mobile */
+  .mockup-card.is-top {
+    z-index: 5 !important;
+    opacity: 1 !important;
+    transform: rotate(0deg) scale(1.05) translateZ(40px) !important;
+    border-color: rgba(255, 199, 0, 0.55) !important;
+    box-shadow: 0 25px 55px -10px rgba(0, 0, 0, 0.95), 0 0 30px rgba(255, 199, 0, 0.2) !important;
+  }
+
+  /* Entrance and shuffle keyframe animations for the stacked cards */
+  @keyframes stackPopCenter {
+    0% {
+      opacity: 0;
+      transform: translateY(24px) scale(0.92) rotate(0deg);
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(1.5deg) scale(1) translateZ(30px);
+    }
+  }
+
+  @keyframes stackPopLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(25px) scale(0.88) rotate(0deg);
+    }
+    100% {
+      opacity: 0.88;
+      transform: rotate(-7.5deg) scale(0.93) translateZ(10px);
+    }
+  }
+
+  @keyframes stackPopRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-25px) scale(0.88) rotate(0deg);
+    }
+    100% {
+      opacity: 0.9;
+      transform: rotate(7.5deg) scale(0.93) translateZ(20px);
+    }
   }
 
   /* =========================================================================
@@ -2622,6 +2704,11 @@ img {
 }
 
 @media (max-width: 400px) {
+  .mockup-stack {
+    transform: scale(0.92);
+    transform-origin: center top;
+  }
+
   .editorial-hero-name {
     font-size: 2.35rem;
   }
@@ -2697,5 +2784,12 @@ img {
 
   .hmb-controls {
     gap: 0.15rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .mockup-stack {
+    transform: scale(0.82);
+    transform-origin: center top;
   }
 }
