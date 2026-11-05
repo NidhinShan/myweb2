@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hobbies &amp; Passions · Nidhin Shan</title>
+  <meta name="description" content="Beyond the code: football, cinema, reading, and geopolitics - passions of Nidhin Shan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet" />
+  <script>document.documentElement.dataset.theme="dark";try{localStorage.setItem("theme","dark");}catch(e){}</script>
+  <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body data-page="hobbies" data-base="../">
+  <div id="site-header"></div>
+  <main class="container editorial-section">
+    <div class="section-head-wrap">
+      <span class="editorial-section-tag">BEYOND THE CODE</span>
+      <h1 class="editorial-section-title">Passions &amp; Hobbies</h1>
+      <p class="editorial-lead">What fuels my curiosity and energy outside engineering: competitive turf football, mind-bending cinema, systems reading, and global supply chain geopolitics.</p>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="hobbies-filter-bar" id="hobbies-filter-bar">
+      <button class="filter-btn active" data-hobby-filter="all">All Passions</button>
+      <button class="filter-btn" data-hobby-filter="football">⚽ Football</button>
+      <button class="filter-btn" data-hobby-filter="cinema">🎬 Movies &amp; Series</button>
+      <button class="filter-btn" data-hobby-filter="reading">📚 Books</button>
+      <button class="filter-btn" data-hobby-filter="geopolitics">🌍 Geopolitics</button>
+    </div>
+
+    <div class="hobbies-grid" id="hobbies-grid"></div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../static/js/data.js"></script>
+  <script src="../static/js/main.js"></script>
+</body>
+</html>

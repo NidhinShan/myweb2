@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nidhin Shan · B.Tech CSE &amp; Full-Stack Developer</title>
+  <meta name="description" content="Personal portfolio of Nidhin Shan: full-stack web developer, campus leader, and B.Tech CSE student at NSS College of Engineering, Palakkad." />
+  
+  <!-- Preconnect & Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <script>document.documentElement.dataset.theme="dark";try{localStorage.setItem("theme","dark");}catch(e){}</script>
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body data-page="home" data-base="">
+  <div id="site-header"></div>
+
+  <main class="container">
+
+    <!-- =========================================================================
+         EDITORIAL SPLIT-SCREEN HERO (MATCHING REFERENCE DESIGN)
+         ========================================================================= -->
+    <section class="editorial-hero reveal" id="hero-editorial">
+      <div class="editorial-frame">
+        
+        <!-- Top Bar: Corner Tab + Works Header with Tech Stack -->
+        <div class="editorial-top-bar">
+          <a href="#about" class="editorial-corner-tab">
+            <span>About Me</span>
+            <svg class="tab-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="7" x2="17" y2="17"></line>
+              <polyline points="17 7 17 17 7 17"></polyline>
+            </svg>
+          </a>
+
+          <div class="editorial-works-head">
+            <div class="works-badge-title">
+              <span>Works</span>
+              <sup class="works-count-sup">(06)</sup>
+            </div>
+            <div class="tech-brand-strip">
+              <span class="brand-item">Node.js</span>
+              <span class="brand-sep">·</span>
+              <span class="brand-item">Postgres</span>
+              <span class="brand-sep">·</span>
+              <span class="brand-item">JavaScript</span>
+              <span class="brand-sep">·</span>
+              <span class="brand-item">Tailwind</span>
+              <span class="brand-sep">·</span>
+              <span class="brand-item">Python</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Split Grid: Left Portrait + Right Works Index -->
+        <div class="editorial-split-grid">
+          
+          <!-- Left Column: Portrait with Organic Edge Mask & Giant Name Overlay -->
+          <div class="editorial-portrait-zone">
+            <div class="portrait-photo-container">
+              <img src="static/assets/mypro.jpeg" alt="Nidhin Shan Portrait" class="editorial-photo" />
+              <div class="portrait-gradient-right"></div>
+              <div class="portrait-gradient-bottom"></div>
+            </div>
+
+            <!-- Giant Typography Overlay across the Lower Section of Portrait -->
+            <div class="editorial-name-overlay">
+              <h1 class="editorial-hero-name">
+                <span>Nidhin</span>
+                <span>Shan</span>
+              </h1>
+              <p class="editorial-hero-role">B.Tech CSE Student · Full-Stack Developer</p>
+            </div>
+          </div>
+
+          <!-- Right Column: Works Index List + Interactive Floating Mockup Preview -->
+          <div class="editorial-works-zone">
+            <!-- Interactive Works Index List -->
+            <div class="works-index-container" id="works-index-container">
+              <!-- Dynamically rendered and managed by main.js -->
+            </div>
+
+            <!-- Floating 3D Mockup Preview Component (Tilted Cards Hovering Over/Beside List) -->
+            <div class="floating-mockup-wrapper" id="floating-mockup-preview">
+              <!-- Dynamically populated with layered mockups by main.js -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Meta Bar -->
+        <div class="editorial-bottom-bar">
+          <!-- Availability -->
+          <div class="meta-col">
+            <span class="meta-sub">AVAILABILITY</span>
+            <span class="meta-main">
+              Available Today <span class="live-pulse-dot"></span>
+            </span>
+          </div>
+
+          <!-- Location -->
+          <div class="meta-col">
+            <span class="meta-sub">LOCATION</span>
+            <span class="meta-main">Palakkad, Kerala · India</span>
+          </div>
+
+          <!-- Actions: Socials + Book a Call -->
+          <div class="meta-actions">
+            <a href="https://github.com/NidhinShan" target="_blank" rel="noopener" class="meta-action-pill" title="GitHub" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/Nidhin-Shan" target="_blank" rel="noopener" class="meta-action-pill" title="LinkedIn" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <button class="meta-action-pill" id="music-dock-toggle" title="Toggle Ambient Audio Player" aria-label="Audio player">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            </button>
+            <a href="templates/contact.html" class="meta-cta-book">
+              <span>Book a Call</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 1: EDITORIAL BIOGRAPHY, RIGHT NOW & STATS
+         ========================================================================= -->
+    <section class="editorial-section reveal" id="about">
+      <div class="section-head-wrap">
+        <span class="editorial-section-tag">01 · BIOGRAPHY</span>
+        <h2 class="editorial-section-title">Engineering Scalable Systems · Leading Campus Operations</h2>
+        <p class="editorial-lead">Computer Science undergraduate bridging full-stack software development, network systems, and university governance.</p>
+      </div>
+
+      <div class="about-bento-grid">
+        <!-- Bio Card -->
+        <div class="editorial-card bio-card">
+          <div class="bio-card-content">
+            <p class="bio-text" data-bind="bio">
+              Computer Science student at NSS College of Engineering, Palakkad (APJAKTU). Passionate about full-stack web development, network architecture, and open-source tools. Active campus leader bridging student governance, tech community building, and large-scale festival operations.
+            </p>
+            <div class="bio-actions">
+              <a class="btn btn-primary" id="resume-btn" download>
+                <span>Download CV</span>
+                <span>↓</span>
+              </a>
+              <a class="btn btn-ghost" href="#contact">
+                <span>Get in touch</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Focus & Stats -->
+        <div class="about-side-stack">
+          <!-- "Right Now" Live Tile -->
+          <div class="now-tile">
+            <div class="now-head">
+              <span class="now-tag">Current Focus</span>
+              <span class="live-pulse-dot"></span>
+            </div>
+            <div class="now-row">
+              <h4>Building</h4>
+              <p>LocalHaul &amp; GoPal systems</p>
+            </div>
+            <div class="now-row">
+              <h4>Learning</h4>
+              <p>Network protocols, security &amp; full-stack scaling</p>
+            </div>
+            <div class="now-status-live">
+              <span class="live-pulse-dot"></span>
+              <span>Open to technical internships &amp; collaborations</span>
+            </div>
+          </div>
+
+          <!-- Stats Counters -->
+          <div class="stats-grid-row" id="stats-grid">
+            <!-- Dynamically populated from DATA.stats -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: FEATURED WORKS / PROJECTS SHOWCASE
+         ========================================================================= -->
+    <section class="editorial-section reveal" id="projects">
+      <div class="section-head-wrap">
+        <span class="editorial-section-tag">02 · PORTFOLIO</span>
+        <h2 class="editorial-section-title">Selected Engineering Works</h2>
+        <p class="editorial-lead">Production web systems, fleet logistics engines, and institutional event utilities.</p>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Dynamically populated from DATA.projects by main.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: LEADERSHIP & GOVERNANCE ROLES
+         ========================================================================= -->
+    <section class="editorial-section reveal" id="roles">
+      <div class="section-head-wrap">
+        <span class="editorial-section-tag">03 · LEADERSHIP</span>
+        <h2 class="editorial-section-title">Campus Governance &amp; Festival Direction</h2>
+        <p class="editorial-lead">Student representation, large-scale festival operations, and department financial administration at NSSCE.</p>
+      </div>
+
+      <div class="roles-grid" id="roles-grid">
+        <!-- Dynamically populated from DATA.roles by main.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: TIMELINE & JOURNEY MILESTONES
+         ========================================================================= -->
+    <section class="editorial-section reveal" id="timeline">
+      <div class="section-head-wrap">
+        <span class="editorial-section-tag">04 · JOURNEY</span>
+        <h2 class="editorial-section-title">Milestones &amp; Evolution</h2>
+        <p class="editorial-lead">Key achievements, hackathons, cybersecurity CTF competitions, and leadership tenures over the years.</p>
+      </div>
+
+      <div class="timeline-filters" id="timeline-filters"></div>
+      <div class="timeline-matrix" id="timeline-matrix">
+        <!-- Dynamically populated from DATA.timeline by main.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: BEYOND THE CODE / HOBBIES & PASSIONS
+         ========================================================================= -->
+    <section class="editorial-section reveal" id="hobbies">
+      <div class="section-head-wrap">
+        <span class="editorial-section-tag">05 · BEYOND THE CODE</span>
+        <h2 class="editorial-section-title">Passions &amp; Interests</h2>
+        <p class="editorial-lead">What fuels my curiosity outside engineering: sports, cinema, reading, and global supply chains.</p>
+      </div>
+
+      <div class="hobbies-filter-bar" id="hobbies-filter-bar">
+        <button class="filter-btn active" data-hobby-filter="all">All Passions</button>
+        <button class="filter-btn" data-hobby-filter="football">⚽ Football</button>
+        <button class="filter-btn" data-hobby-filter="cinema">🎬 Movies &amp; Series</button>
+        <button class="filter-btn" data-hobby-filter="reading">📚 Books</button>
+        <button class="filter-btn" data-hobby-filter="geopolitics">🌍 Geopolitics</button>
+      </div>
+
+      <div class="hobbies-grid" id="hobbies-grid">
+        <!-- Dynamically populated from DATA.hobbies by main.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 6: CONTACT & COLLABORATION
+         ========================================================================= -->
+    <section class="editorial-section reveal" id="contact">
+      <div class="section-head-wrap">
+        <span class="editorial-section-tag">06 · INQUIRY</span>
+        <h2 class="editorial-section-title">Let's Build Something Together</h2>
+        <p class="editorial-lead">Have a project, collaboration idea, or technical role? Drop a direct message.</p>
+      </div>
+
+      <div class="contact-layout-split">
+        <form id="contact-form" class="contact-form-card" novalidate>
+          <label>Your Name
+            <input type="text" name="name" required minlength="2" autocomplete="name" placeholder="Alex Morgan" />
+          </label>
+          <label>Your Email
+            <input type="email" name="email" required autocomplete="email" placeholder="alex@example.com" />
+          </label>
+          <label>Subject
+            <input type="text" name="subject" required minlength="3" placeholder="Technical Collaboration / Opportunity" />
+          </label>
+          <label>Message
+            <textarea name="message" rows="5" required minlength="10" placeholder="Tell me about your project, goals, or timeline..."></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit" style="width: 100%; justify-content: center;">
+            <span>Send message</span>
+            <span>→</span>
+          </button>
+          <div id="form-status" role="status"></div>
+        </form>
+
+        <div class="contact-reach-stack">
+          <a class="reach-card" id="mail-link" href="mailto:nidhinshan7@gmail.com">
+            <span class="reach-icon">✉️</span>
+            <div class="reach-info">
+              <b>Email</b>
+              <small data-bind="email">nidhinshan7@gmail.com</small>
+            </div>
+          </a>
+          <a class="reach-card" id="li-link" target="_blank" rel="noopener" href="https://www.linkedin.com/in/Nidhin-Shan">
+            <span class="reach-icon">💼</span>
+            <div class="reach-info">
+              <b>LinkedIn</b>
+              <small>Connect professionally</small>
+            </div>
+          </a>
+          <a class="reach-card" id="gh-link" target="_blank" rel="noopener" href="https://github.com/NidhinShan">
+            <span class="reach-icon">🐙</span>
+            <div class="reach-info">
+              <b>GitHub</b>
+              <small>Explore open source repositories</small>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       AMBIENT MUSIC PLAYER DOCK (SLEEK & NON-INTRUSIVE)
+       ========================================================================= -->
+  <aside class="hero-music-dock" aria-label="Ambient Music Player">
+    <div class="hero-music-bento-small" id="hero-music-card">
+      <div class="hmb-inner">
+        <div class="hmb-cover" id="hmc-cover" title="Album artwork">
+          <img id="hmc-cover-img" src="" alt="Album artwork" style="display:none;" />
+          <span id="hmc-cover-emoji" class="hmb-emoji">🎧</span>
+        </div>
+
+        <div class="hmb-main">
+          <div class="hmb-text-row">
+            <span class="hmb-title" id="hmc-title">Attention</span>
+            <span class="hmb-sep">·</span>
+            <span class="hmb-artist" id="hmc-artist">Charlie Puth</span>
+            <div class="hmb-eq" id="hmc-eq">
+              <span class="hmc-eq-bar"></span>
+              <span class="hmc-eq-bar"></span>
+              <span class="hmc-eq-bar"></span>
+              <span class="hmc-eq-bar"></span>
+              <span class="hmc-eq-bar"></span>
+            </div>
+          </div>
+
+          <div class="hmb-scrub-row">
+            <div class="hmb-progress-bar" id="hmc-progress-bar" title="Seek song">
+              <div class="hmb-progress-fill" id="hmc-progress-fill"></div>
+            </div>
+            <div class="hmb-time font-mono">
+              <span id="hmc-time-cur">0:00</span> / <span id="hmc-time-total">3:31</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hmb-controls">
+          <button class="hmb-btn" id="hmc-mute-btn" title="Mute/Unmute" aria-label="Mute audio">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+          <button class="hmb-btn" id="hmc-prev-btn" title="Previous song" aria-label="Previous track">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          </button>
+          <button class="hmb-play-btn" id="hmc-play-btn" title="Play / Pause full song" aria-label="Play or pause track">
+            <svg id="hmc-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg id="hmc-pause-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+          <button class="hmb-btn" id="hmc-next-btn" title="Next song" aria-label="Next track">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+          <button class="hmb-queue-btn" id="hmc-queue-toggle" title="View queued songs" aria-label="Toggle playlist queue">
+            <span>Queue</span>
+            <span class="hmb-queue-count">8</span>
+            <svg class="hmb-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Playlist Queue Drawer -->
+      <div class="hmb-queue-drawer" id="hmc-queue-drawer">
+        <div class="hmb-queue-head">
+          <span>Queued Tracks · Full Songs</span>
+          <span class="hmb-queue-badge">8 Songs</span>
+        </div>
+        <div class="hmb-queue-list" id="hmc-queue-list"></div>
+      </div>
+    </div>
+  </aside>
+
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="static/js/data.js"></script>
+  <script src="static/js/main.js"></script>
+  <script src="static/js/music-player.js"></script>
+</body>
+</html>

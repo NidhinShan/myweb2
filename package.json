@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-nidhin-shan",
+  "version": "2.0.0",
+  "description": "Modern dark editorial developer portfolio featuring split-screen hero composition, interactive works index, and fluid micro-interactions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["portfolio", "dark-editorial", "developer", "full-stack", "ui-ux"],
+  "author": "Nidhin Shan",
+  "license": "MIT"
+}

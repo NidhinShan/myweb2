@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact · Nidhin Shan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet" />
+  <script>document.documentElement.dataset.theme="dark";try{localStorage.setItem("theme","dark");}catch(e){}</script>
+  <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body data-page="contact" data-base="../">
+  <div id="site-header"></div>
+  <main class="container editorial-section">
+    <div class="section-head-wrap">
+      <span class="editorial-section-tag">GET IN TOUCH</span>
+      <h1 class="editorial-section-title">Let's Connect &amp; Collaborate</h1>
+      <p class="editorial-lead">Open to technical internships, full-stack systems engineering, and collaborative projects. Send a direct inquiry below.</p>
+    </div>
+
+    <div class="contact-layout-split">
+      <form id="contact-form" class="contact-form-card" novalidate>
+        <label>Your Name
+          <input type="text" name="name" required minlength="2" autocomplete="name" placeholder="Alex Morgan" />
+        </label>
+        <label>Your Email
+          <input type="email" name="email" required autocomplete="email" placeholder="alex@example.com" />
+        </label>
+        <label>Subject
+          <input type="text" name="subject" required minlength="3" placeholder="Technical Collaboration / Opportunity" />
+        </label>
+        <label>Message
+          <textarea name="message" rows="5" required minlength="10" placeholder="Tell me about your project, ideas, or timeline..."></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit" style="width: 100%; justify-content: center;">
+          <span>Send message</span>
+          <span>→</span>
+        </button>
+        <div id="form-status" role="status"></div>
+      </form>
+
+      <div class="contact-reach-stack">
+        <a class="reach-card" id="mail-link" href="mailto:nidhinshan7@gmail.com">
+          <span class="reach-icon">✉️</span>
+          <div class="reach-info">
+            <b>Email</b>
+            <small data-bind="email">nidhinshan7@gmail.com</small>
+          </div>
+        </a>
+        <a class="reach-card" id="li-link" target="_blank" rel="noopener" href="https://www.linkedin.com/in/Nidhin-Shan">
+          <span class="reach-icon">💼</span>
+          <div class="reach-info">
+            <b>LinkedIn</b>
+            <small>Connect professionally</small>
+          </div>
+        </a>
+        <a class="reach-card" id="gh-link" target="_blank" rel="noopener" href="https://github.com/NidhinShan">
+          <span class="reach-icon">🐙</span>
+          <div class="reach-info">
+            <b>GitHub</b>
+            <small>Explore repositories</small>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../static/js/data.js"></script>
+  <script src="../static/js/main.js"></script>
+</body>
+</html>
